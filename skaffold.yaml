@@ -2,7 +2,7 @@ apiVersion: skaffold/v1beta2
 kind: Config
 build:
   artifacts:
-  - image: cbjx-slavegrove/jx-nodejs
+  - image: cbjx-knightpitch/jx-nodejs
     context: .
     docker: {}
   tagPolicy:

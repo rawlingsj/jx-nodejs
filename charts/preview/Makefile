@@ -8,8 +8,10 @@ ifeq ($(OS),Darwin)
 else ifeq ($(OS),Linux)
 	sed -i -e "s/version:.*/version: $(PREVIEW_VERSION)/" Chart.yaml
 	sed -i -e "s/version:.*/version: $(PREVIEW_VERSION)/" ../*/Chart.yaml
-	sed -i -e "s|repository:.*|repository: $(DOCKER_REGISTRY)\/cbjx-slavegrove\/jx-nodejs|" values.yaml
+	sed -i -e "s|repository:.*|repository: $(DOCKER_REGISTRY)\/cbjx-knightpitch\/jx-nodejs|" values.yaml
 	sed -i -e "s/tag:.*/tag: $(PREVIEW_VERSION)/" values.yaml
+	sed -i -e "s/previewname: .*/previewname: jx-node-pr-$(PULL_NUMBER)/" values.yaml
+	sed -i -e "s|fabric8.io/exposeUrl: .*|fabric8.io/exposeUrl: https://cbjx-knightpitch-pr-$(PULL_NUMBER).play-jxaas.live|" values.yaml
 else
 	echo "platfrom $(OS) not supported to release from"
 	exit -1
