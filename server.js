@@ -3,7 +3,10 @@ var http = require('http');
 var fileSystem = require('fs');
 
 var server = http.createServer(function(req, resp){
-	fileSystem.readFile('./index.html', function(error, fileContent){
+	var fileName = './index.html';
+	var path = req.path;
+	console.log("request path ", path);	
+	fileSystem.readFile(fileName, function(error, fileContent){
 		if(error){
 			resp.writeHead(500, {'Content-Type': 'text/plain'});
 			resp.end('Error');
